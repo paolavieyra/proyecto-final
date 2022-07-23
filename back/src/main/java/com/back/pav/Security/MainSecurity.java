@@ -24,9 +24,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class MainSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsImpl userDetailsServiceImpl;
-    @Autowired
-    JwtEntryPoint jwtEntryPoint;
     
+    @Autowired
+    JwtEntryPoint jwtEntryPoint;  
     
     @Bean
     public JwtTokenFilter jwtTokenFilter(){
@@ -69,3 +69,5 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
     
     
 }
+
+

@@ -9,12 +9,13 @@ import { TokenService } from 'src/app/service/token.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   isLogged = false;
   isLogginFail = false;
   loginUsuario!: LoginUsuario;
   nombreUsuario!: string;
-  password!: string;
+  password! : string;
   roles: string[] = [];
   errMsj!: string;
 
@@ -26,7 +27,6 @@ export class LoginComponent implements OnInit {
       this.isLogginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
-
   }
 
   onLogin(): void{
@@ -36,16 +36,14 @@ export class LoginComponent implements OnInit {
         this.isLogginFail = false;
         this.tokenService.setToken(data.token);
         this.tokenService.setUsername(data.nombreUsuario);
-        this.tokenService.setAthorities(data.authorities);
+        this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
         this.router.navigate([''])
-    }, err =>{
-      this.isLogged = false;
-      this.isLogginFail = true;
-      this.errMsj = err.error.mensaje;
-      console.log(this.errMsj);
-      
-    })
-  }
-
-}
+      }, err =>{
+        this.isLogged = false;
+        this.isLogginFail = true;
+        this.errMsj = err.error.mensaje;
+        console.log(this.errMsj);
+        
+      })
+  }}
